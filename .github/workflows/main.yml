@@ -14,6 +14,7 @@ jobs:
     steps:
       - name: Create the tar.gz package
         run: |
+          cd ..
           mkdir $PLUGIN_NAME
           ls -la
           shopt -s extglob
