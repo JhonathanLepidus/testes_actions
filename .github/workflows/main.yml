@@ -41,6 +41,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./KeywordCloudPlugin.tar.gz
-          asset_name: KeywordCloudPlugin.tar.gz
+          asset_path: ./${PLUGIN_NAME}.tar.gz
+          asset_name: ${PLUGIN_NAME}.tar.gz
           asset_content_type: application/x-compressed-tar
