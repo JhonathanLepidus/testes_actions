@@ -18,14 +18,14 @@ jobs:
         run: |
           sudo apt install xmlstarlet
           application=$(xmlstarlet sel -t -v 'version/application' version.xml)
-          if [ $application != $PLUGIN_NAME ]; then echo "Application errado"; fi
+          if [ $application != $PLUGIN_NAME ]; then exit 1; fi
           release=$(xmlstarlet sel -t -v 'version/release' version.xml)
           tag=${{ github.ref }}
           tag=${tag/refs\/tags\/v}
-          if [[ $release != $tag* ]]; then echo "Tag errada"; fi
+          if [[ $release != $tag* ]]; then exit 1 fi
           date_version=$(xmlstarlet sel -t -v 'version/date' version.xml)
           current_date=$(date +'%Y-%m-%d')
-          if [ $date_version != $current_date ]; then echo "Data errada"; fi
+          if [ $date_version != $current_date ]; then exit 1; fi
         shell: bash
       - name: Create the tar.gz package
         run: |
