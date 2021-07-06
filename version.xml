@@ -14,7 +14,7 @@
 	<application>keywordCloud</application>
 	<type>plugins.themes</type>
 	<release>1.0.0</release>
-	<date>2021-07-06</date>
+	<date>2021-07-01</date>
 	<lazy-load>1</lazy-load>
 	<class>ScieloThemePlugin</class>
 </version>
