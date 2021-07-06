@@ -19,12 +19,15 @@ jobs:
           sudo apt install xmlstarlet
           echo "CI_TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
           application=$(xmlstarlet sel -t -v 'version/application' version.xml)
+          echo $application
           if [ $application != $PLUGIN_NAME ]; then exit 1; fi
           release=$(xmlstarlet sel -t -v 'version/release' version.xml)
           tag=${CI_TAG:1}
+          echo $tag
           if [[ $release != $tag* ]]; then exit 1; fi
           date_version=$(xmlstarlet sel -t -v 'version/date' version.xml)
           current_date=$(date +'%Y-%m-%d')
+          echo $date_version
           if [ $date_version != $current_date ]; then exit 1; fi
         shell: bash
       - name: Create the tar.gz package
